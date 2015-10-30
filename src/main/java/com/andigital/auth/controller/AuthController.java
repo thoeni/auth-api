@@ -24,14 +24,11 @@ public class AuthController {
     UserService userService;
 
     @RequestMapping(method = RequestMethod.POST, produces = "application/json")
-    public final AuthResponse login(
-            @RequestParam(value = "username", required = false) String username,
-            @RequestParam(value = "password", required = false) String password) {
+    public final AuthResponse login(@RequestParam(value = "id", required = true) String id) {
 
-        logger.info("Username: "+username);
-        logger.info("Password: "+password);
+        logger.info("Id: "+id);
 
-        return new AuthResponse(userService.getUserById(username), "340ct97qy3x4r27943ry9283n4");
+        return new AuthResponse(userService.getUserById(id), "340ct97qy3x4r27943ry9283n4");
     }
 
 }
